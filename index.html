@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Hash Based Routing (SPA)</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+
 <body>
     <nav class="navbar navbar-default">
         <div class="container">
@@ -30,7 +32,7 @@
                 <p>This demonstrates the use of jquery to simulate page routing.</p>
             </div>
             <section>
-                <h2>Introduction</h2>
+                <h2>Local hack day</h2>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae facere exercitationem veniam, aliquid aliquam atque quos quisquam corporis ipsa itaque fugit debitis ipsum recusandae minima quasi. Pariatur repudiandae asperiores id?</p>
 
                 <h2>Why Use Vanilla JS</h2>
@@ -76,40 +78,41 @@
             var content = document.getElementById(id);
             return document.importNode(content, true).content;
         }
-        
+
         function loadContentToView(view, content) {
             view.innerHTML = '';
             view.appendChild(content);
         }
-        
+
         function navigate(route, view) {
             let tpl;
             switch (route) {
-            case '':
-            case '/':
-                tpl = 'home.tpl';
-                break;
-            case '/about':
-                tpl = 'about.tpl';
-                break;
-            case '/contact':
-                tpl = 'contact.tpl';
-                break;
-            default:
-                tpl = '404.tpl';
-                break;
+                case '':
+                case '/':
+                    tpl = 'home.tpl';
+                    break;
+                case '/about':
+                    tpl = 'about.tpl';
+                    break;
+                case '/contact':
+                    tpl = 'contact.tpl';
+                    break;
+                default:
+                    tpl = '404.tpl';
+                    break;
             }
             loadContentToView(view, getTemplateContent(tpl));
         }
-        
+
         function loadView() {
             var route = window.location.hash.substr(1);
             var container = document.querySelector('#root');
             navigate(route, container);
         }
-        
+
         window.addEventListener('load', loadView);
         window.addEventListener('hashchange', loadView);
     </script>
 </body>
+
 </html>
